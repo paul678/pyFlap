@@ -235,11 +235,6 @@ class AutomatonRender(Tk):
                 self.canvas.itemconfig(self.canvas.find_closest(event.x, event.y)[0], fill=COLOR_FINAL)
 
     def on_node_release(self, event):
-        '''End drag of an object
-        :param event:
-        '''
-        # reset the drag information
-        # print self.automaton.nodes[0].name;
         if self.action == AutomatonAction.Add_State:
             tag = self.canvas.gettags(self._drag_data["item"])[0]
 
@@ -252,7 +247,6 @@ class AutomatonRender(Tk):
         elif self.action == AutomatonAction.Add_Transition:
             self.canvas.delete("templine")
             tag = self.canvas.gettags(self.canvas.find_closest(event.x, event.y)[0])[0]
-            # print(tag)
             if tag:
                 self.transitionBind.set_secondNode(self.automaton.nodes[int(tag[4:])])
                 first_node = self.transitionBind.firstnode
@@ -291,7 +285,7 @@ class AutomatonRender(Tk):
                         coordx = self.canvas.coords(line)[2]
                         coordy = self.canvas.coords(line)[3]
                         if node.name != i.node.name:
-                            coef = 0;
+                            coef = 0
                             for transaction in i.node.transitions:
                                 if transaction.node.name == node.name:
                                     coef = 20

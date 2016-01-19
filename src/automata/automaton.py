@@ -2,7 +2,6 @@ import collections
 import pickle
 
 from automata.node import Node
-from automata.nodestate import NodeState
 
 
 class Automaton:
